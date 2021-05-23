@@ -1,0 +1,71 @@
+:root {
+  --ezn: #21C2BD;
+  --segment: #FCE300;
+  --blue-primary: #3D73FF;
+  --blue-secondary: #2C52B6;
+  --green: #3F9B4E;
+  --orange-primary: #FF9900;
+  --orange-secondary: #D16400;
+  --red: #DB2323;
+
+  --gray-primary: #EEEEEE;
+  --gray-secondary: #C4C4C4;
+  --gray-text: #6D6D6D;
+}
+
+.font-segment {
+  font-family: 'seven_segmentregular';
+}
+
+.bg-ezn {
+  background: var(--ezn) !important;
+}
+
+.bg-gray-primary {
+  background: var(--gray-primary);
+}
+
+.bg-gray-secondary {
+  background: var(--gray-secondary);
+}
+
+.bg-blue-primary {
+  background: var(--blue-primary);
+}
+
+.bg-blue-secondary {
+  background: var(--blue-secondary);
+}
+
+.bg-green {
+  background: var(--green);
+}
+
+.bg-orange-primary {
+  background: var(--orange-primary);
+}
+
+.bg-orange-secondary {
+  background: var(--orange-secondary);
+}
+
+.bg-red {
+  background: var(--red);
+}
+
+.text-segment {
+  color: var(--segment);
+}
+
+.text-gray {
+  color: var(--gray-text);
+}
+
+.btn-icon {
+  width: 52px;
+  height: 52px;
+}
+
+.material-icons {
+  font-size: 30px;
+}

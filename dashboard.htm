@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EZN tablica wyników</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/sevenSegment.css">
+  <link rel="stylesheet" href="src/master.css">
+
+  <script defer src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script defer src="src/dashboard.js"></script>
+</head>
+<body>
+  <div class="px-6 py-4 bg-ezn text-white text-2xl">
+    Tablica wyników
+  </div>
+  
+  <div class="m-4" id="app">
+    <div class="bg-gray-600 text-segment p-4 text-4xl text-center font-segment mb-6">
+      {{pointsA}} {{pointsB}} <br>
+      <span class="text-base">{{setsA}}</span> {{faulsA}} {{time}} {{faulsB}} <span class="text-base">{{setsB}}</span>
+    </div>
+
+    <div class="text-sm mb-2">Profil:</div>
+    <div class="text-gray bg-gray-primary text-xl rounded-md">
+      <div class="p-3 float-left">
+        Koszyówka
+      </div>
+      <div class="btn-icon p-3 bg-gray-secondary rounded-md float-right" style="font-variant-numeric: tabular-nums;">
+        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          arrow_forward
+        </span>
+      </div>
+      <div class="clear-both"></div>
+    </div>
+  </div>
+</body>
+</html>
