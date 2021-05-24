@@ -6,9 +6,7 @@ const app = new Vue({
   methods: {
     connectBlue() {
       navigator.bluetooth.requestDevice({
-        filters: [{
-          name: 'EZNScoreboard'
-        }]
+        filters: [{ services: ['battery_service'] }]
       })
         .then(device => console.log(device))
         .catch(err => console.error(err))
