@@ -1,0 +1,22 @@
+{
+  "short_name": "EZN Tablica",
+  "name": "EZN ",
+  "icons": [
+    {
+      "src": "/src/icons/icon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },{
+      "src": "/src/icons/icon192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/dashboard.htm",
+  "background_color": "#21C2BD",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#12706D",
+  "description": "Interfejs użytkownika do tablicy wyników w EZN-nie"
+}

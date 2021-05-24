@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#12706D">
 
   <title>EZN tablica wyników</title>
+
+  <link rel="manifest" href="/manifest.json">
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
@@ -13,15 +16,16 @@
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="src/master.css">
 
+  <script defer src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <script defer src="src/connect.js"></script>
 </head>
 <body>
-  <div class="px-6 py-4 bg-ezn text-white text-2xl">
-    Tablica wyników
+  <div class="px-6 py-4 bg-ezn text-white text-2xl flex">
+    <img src="src/ezn.svg" class="mr-2 w-1/6" alt="ezn"> Tablica wyników
   </div>
   
-  <div class="m-4">
-    <div class="text-white bg-blue-primary text-xl rounded-md">
+  <div id="app" class="m-4">
+    <div @click="connectBlue" class="text-white bg-blue-primary text-xl rounded-md">
       <div class="p-3 float-left">
         Połącz się z tablicą
       </div>
