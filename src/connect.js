@@ -7,7 +7,7 @@ const app = new Vue({
     connectBlue() {
       navigator.bluetooth.requestDevice({
         filters: [{
-          name: 'EZN Scoreboard'
+          name: 'EZNScoreboard'
         }]
       })
         .then(device => console.log(device))
