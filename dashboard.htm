@@ -25,137 +25,152 @@
   </div>
   
   <div class="m-4" id="app">
-    <div class="bg-gray-800 text-segment p-4 text-4xl text-center font-segment mb-6">
-      {{pointsA}} {{pointsB}} <br>
-      <span class="text-base">{{setsA}}</span> {{faulsA}} {{time}} {{faulsB}} <span class="text-base">{{setsB}}</span>
-    </div>
-
-    <div class="text-sm mb-2">Profil:</div>
-    <div @click="showProfileSelect = true" class="text-gray bg-gray-primary text-xl rounded-md">
-      <div class="p-3 float-left">
-        {{profile[selectedProfile]}}
-      </div>
-      <div class="btn-icon p-3 bg-gray-secondary rounded-md float-right" style="font-variant-numeric: tabular-nums;">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          arrow_forward
-        </span>
-      </div>
-      <div class="clear-both"></div>
-    </div>
-
-    <div v-if="showProfileSelect" @click="showProfileSelect = false" class="z-10 w-full h-full bg-gray-800 bg-opacity-80 fixed top-0 left-0">
-      <div class="mx-8 my-16 rounded-md bg-white">
-        <div class="p-4 text-xl font-semibold rounded-t-md border-gray-200 border-b">
-          Wybierz dyscyplinę:
+    <div v-if="!bleConnected">
+      <div @click="connectBlue" class="text-white bg-blue-primary text-xl rounded-md">
+        <div class="p-3 float-left">
+          Połącz się z tablicą
         </div>
-        <div @click="selectedProfile = 0; showProfileSelect = false" class="p-4 text-xl transition-all duration-500 hover:bg-gray-100 border-gray-200 border-b">
-          Koszykówka
+        <div class="btn-icon p-3 bg-blue-secondary rounded-md float-right" style="font-variant-numeric: tabular-nums;">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            bluetooth
+          </span>
         </div>
-        <div @click="selectedProfile = 1; showProfileSelect = false" class="p-4 text-xl transition-all duration-500 hover:bg-gray-100 border-gray-200 border-b">
-          Siatkówka
+        <div class="clear-both"></div>
+      </div>
+    </div>
+    <div v-if="bleConnected">
+      <div class="bg-gray-800 text-segment p-4 text-4xl text-center font-segment mb-6">
+        {{pointsA}} {{pointsB}} <br>
+        <span class="text-base">{{setsA}}</span> {{faulsA}} {{time}} {{faulsB}} <span class="text-base">{{setsB}}</span>
+      </div>
+  
+      <div class="text-sm mb-2">Profil:</div>
+      <div @click="showProfileSelect = true" class="text-gray bg-gray-primary text-xl rounded-md">
+        <div class="p-3 float-left">
+          {{profile[selectedProfile]}}
         </div>
-        <div @click="selectedProfile = 2; showProfileSelect = false" class="p-4 text-xl transition-all duration-500 hover:bg-gray-100 rounded-b-md border-gray-200 border-b">
-          Piłka ręczna / nożna
+        <div class="btn-icon p-3 bg-gray-secondary rounded-md float-right" style="font-variant-numeric: tabular-nums;">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            arrow_forward
+          </span>
+        </div>
+        <div class="clear-both"></div>
+      </div>
+  
+      <div v-if="showProfileSelect" @click="showProfileSelect = false" class="z-10 w-full h-full bg-gray-800 bg-opacity-80 fixed top-0 left-0">
+        <div class="mx-8 my-16 rounded-md bg-white">
+          <div class="p-4 text-xl font-semibold rounded-t-md border-gray-200 border-b">
+            Wybierz dyscyplinę:
+          </div>
+          <div @click="selectedProfile = 0; showProfileSelect = false" class="p-4 text-xl transition-all duration-500 hover:bg-gray-100 border-gray-200 border-b">
+            Koszykówka
+          </div>
+          <div @click="selectedProfile = 1; showProfileSelect = false" class="p-4 text-xl transition-all duration-500 hover:bg-gray-100 border-gray-200 border-b">
+            Siatkówka
+          </div>
+          <div @click="selectedProfile = 2; showProfileSelect = false" class="p-4 text-xl transition-all duration-500 hover:bg-gray-100 rounded-b-md border-gray-200 border-b">
+            Piłka ręczna / nożna
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="text-sm mb-2 mt-6">Czas:</div>
-    <div class="flex">
-      <div class="text-gray text-xl bg-gray-primary rounded-md w-full">
-        <input v-model="timeSet" type="number" class="bg-gray-primary rounded-md p-3 w-full focus:outline-none" min="0">
+  
+      <div class="text-sm mb-2 mt-6">Czas:</div>
+      <div class="flex">
+        <div class="text-gray text-xl bg-gray-primary rounded-md w-full">
+          <input v-model="timeSet" type="number" class="bg-gray-primary rounded-md p-3 w-full focus:outline-none" min="0">
+        </div>
+        <!-- <div class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            restart_alt
+          </span>
+        </div> -->
+        <div v-if="!timeStop" @click="pressStop" class="btn-icon bg-red text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            stop
+          </span>
+        </div>
+        <div v-if="timeStop" class="btn-icon bg-gray-400 text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            stop
+          </span>
+        </div>
+        <div v-if="!timePause" @click="timePause = true" class="btn-icon bg-orange-primary text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            pause
+          </span>
+        </div>
+        <div v-if="timePause" @click="startInterval(timeStop); timePause = false; timeStop = false" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            play_arrow
+          </span>
+        </div>
       </div>
-      <!-- <div class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          restart_alt
-        </span>
-      </div> -->
-      <div v-if="!timeStop" @click="pressStop" class="btn-icon bg-red text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          stop
-        </span>
+  
+      <div class="w-full border-b-2 border-gray-400 border-dashed mt-6 mb-4"></div>
+  
+      <div class="text-base font-semibold mb-1">Drużyna 1:</div>
+      <div class="text-sm mb-2">Punkty:</div>
+      <div class="flex">
+        <div @click="pointsA--" class="btn-icon bg-red text-white p-3 rounded-md">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            remove
+          </span>
+        </div>
+        <div class="text-gray text-xl bg-gray-primary rounded-md w-full text-center ml-2">
+          <div class="p-3">{{pointsA}} </div>
+        </div>
+        <div @click="pointsA++" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            add
+          </span>
+        </div>
+        <div @click="pointsA = 0" class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            restart_alt
+          </span>
+        </div>
       </div>
-      <div v-if="timeStop" class="btn-icon bg-gray-400 text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          stop
-        </span>
+      <div class="text-sm mb-2 mt-4">Faule:</div>
+      <div class="flex">
+        <div @click="faulsA--" class="btn-icon bg-red text-white p-3 rounded-md">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            remove
+          </span>
+        </div>
+        <div class="text-gray text-xl bg-gray-primary rounded-md w-full text-center ml-2">
+          <div class="p-3">{{faulsA}} </div>
+        </div>
+        <div @click="faulsA++" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            add
+          </span>
+        </div>
+        <div @click="faulsA = 0" class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            restart_alt
+          </span>
+        </div>
       </div>
-      <div v-if="!timePause" @click="timePause = true" class="btn-icon bg-orange-primary text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          pause
-        </span>
-      </div>
-      <div v-if="timePause" @click="startInterval(timeStop); timePause = false; timeStop = false" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          play_arrow
-        </span>
-      </div>
-    </div>
-
-    <div class="w-full border-b-2 border-gray-400 border-dashed mt-6 mb-4"></div>
-
-    <div class="text-base font-semibold mb-1">Drużyna 1:</div>
-    <div class="text-sm mb-2">Punkty:</div>
-    <div class="flex">
-      <div @click="pointsA--" class="btn-icon bg-red text-white p-3 rounded-md">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          remove
-        </span>
-      </div>
-      <div class="text-gray text-xl bg-gray-primary rounded-md w-full text-center ml-2">
-        <div class="p-3">{{pointsA}} </div>
-      </div>
-      <div @click="pointsA++" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          add
-        </span>
-      </div>
-      <div @click="pointsA = 0" class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          restart_alt
-        </span>
-      </div>
-    </div>
-    <div class="text-sm mb-2 mt-4">Faule:</div>
-    <div class="flex">
-      <div @click="faulsA--" class="btn-icon bg-red text-white p-3 rounded-md">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          remove
-        </span>
-      </div>
-      <div class="text-gray text-xl bg-gray-primary rounded-md w-full text-center ml-2">
-        <div class="p-3">{{faulsA}} </div>
-      </div>
-      <div @click="faulsA++" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          add
-        </span>
-      </div>
-      <div @click="faulsA = 0" class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          restart_alt
-        </span>
-      </div>
-    </div>
-    <div class="text-sm mb-2 mt-4">Sety:</div>
-    <div class="flex">
-      <div @click="setsA--" class="btn-icon bg-red text-white p-3 rounded-md">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          remove
-        </span>
-      </div>
-      <div class="text-gray text-xl bg-gray-primary rounded-md w-full text-center ml-2">
-        <div class="p-3">{{setsA}} </div>
-      </div>
-      <div @click="setsA++" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          add
-        </span>
-      </div>
-      <div @click="setsA = 0" class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
-        <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          restart_alt
-        </span>
+      <div class="text-sm mb-2 mt-4">Sety:</div>
+      <div class="flex">
+        <div @click="setsA--" class="btn-icon bg-red text-white p-3 rounded-md">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            remove
+          </span>
+        </div>
+        <div class="text-gray text-xl bg-gray-primary rounded-md w-full text-center ml-2">
+          <div class="p-3">{{setsA}} </div>
+        </div>
+        <div @click="setsA++" class="btn-icon bg-green text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            add
+          </span>
+        </div>
+        <div @click="setsA = 0" class="btn-icon bg-blue-primary text-white p-3 rounded-md ml-2">
+          <span class="material-icons text-2xl block relative top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            restart_alt
+          </span>
+        </div>
       </div>
     </div>
   </div>
