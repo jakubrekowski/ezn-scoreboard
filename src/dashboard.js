@@ -38,7 +38,7 @@ const app = new Vue({
     async connectBlue() {
       const device = await navigator.bluetooth.requestDevice({
         filters: [{ name: "Scoreboard" }],
-        optionalServices: ["4fafc201-1fb5-459e-8fcc-c5c9c331914b"],
+        // optionalServices: ["4fafc201-1fb5-459e-8fcc-c5c9c331914b"],
       });
 
       this.bleConnected = true;
