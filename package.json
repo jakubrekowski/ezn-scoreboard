@@ -1,0 +1,19 @@
+{
+  "name": "ezn-scoreboard-ui",
+  "version": "1.0.0",
+  "main": "dashboard.htm",
+  "scripts": {
+    "start": "http-server -S -C .ssl/localhost.pem -K .ssl/localhost-key.pem"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakubrekowski/ezn-scoreboard-ui.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakubrekowski/ezn-scoreboard-ui/issues"
+  },
+  "homepage": "https://github.com/jakubrekowski/ezn-scoreboard-ui#readme",
+  "description": ""
+}
