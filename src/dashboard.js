@@ -82,9 +82,9 @@ const app = new Vue({
       // const textDecoder = new TextDecoder('utf-8')
 
       // const value = await characteristic.readValue()
-      // characteristic.writeValue(textEncoder.encode('papua nowa gwinea'))
+      characteristics.lpoint.writeValue(1);
 
-      // console.log(textDecoder.decode(value))
+      console.log(await characteristics.lpoint.readValue());
     },
   },
 });
