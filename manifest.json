@@ -1,12 +1,13 @@
 {
-  "short_name": "EZN Tablica",
-  "name": "EZN ",
+  "short_name": "ezn score",
+  "name": "ezn scoreboard ",
   "icons": [
     {
       "src": "/src/icons/icon512.png",
       "type": "image/png",
       "sizes": "512x512"
-    },{
+    },
+    {
       "src": "/src/icons/icon192.png",
       "type": "image/png",
       "sizes": "192x192",
