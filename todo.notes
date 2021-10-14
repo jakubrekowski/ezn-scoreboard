@@ -1,3 +1,4 @@
 TODO:
-[ ] Synchronizacja czasu z charakterystyki przy uruchamianiu timera po pownonym połączeniu poprzez BLE
-[ ] Zbudować `index.htm`
+[√] Synchronizacja czasu z charakterystyki przy uruchamianiu timera po pownonym połączeniu poprzez BLE
+[√] Zbudować `index.htm`
+[ ] Możliwość kontynułowania timera (może automatyczny start) po ponownym połączeniu
