@@ -1,30 +1,85 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#12706D">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#12706D" />
 
-  <title>EZN tablica wyników</title>
+    <title>ezn score :: index</title>
 
-  <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="/manifest.json" />
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
-  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="src/master.css">
+    <link href="src/fonts/lato.css" />
+    <link href="src/fonts/material_icons.css" rel="stylesheet" />
+    <link href="src/tailwind.css" rel="stylesheet" />
+    <link href="src/fonts/seven_segment.css" rel="stylesheet" />
+    <link href="src/master.css" rel="stylesheet" />
 
-  <script defer src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
-</head>
-<body>
-  <div class="px-6 py-4 bg-ezn text-white text-2xl flex">
-    <img src="src/ezn.svg" class="mr-2 w-1/6" alt="ezn"> Tablica wyników
-  </div>
-  
-  <div id="app" class="m-4">
-    Tutaj coś kiedyś będzie
-  </div>
-</body>
+    <script defer src="src/vue.js"></script>
+  </head>
+  <body>
+    <div class="px-6 py-4 bg-ezn text-white text-2xl flex text-segment">
+      <img src="src/ezn.svg" class="mr-2 w-1/6" alt="ezn" /> score
+    </div>
+
+    <div id="app" class="m-4">
+      <h2 class="text-xl mb-1">Dzień dobry,</h2>
+
+      <p class="mb-4">
+        Aby uruchomić panel sterowania należy najpierw dodać stronę do pulpitu.
+        Możesz zrobić to w menu (prawy górny róg ekranu).
+      </p>
+
+      <p class="my-4">
+        Ta strona jak i cała tablica jest open source, w ramach inicjatywy
+        <a
+          href="https://github.com/Elektroniczne-Zaklady-Naukowe"
+          target="_blank"
+          rel="noreferer"
+          class="text-blue-400"
+        >
+          ezn open source</a
+        >. Zachęcamy do analizy i poprawianie kodu!
+      </p>
+
+      <p class="my-4">
+        W razie problemów cała wiedza potrzebna do serwisowania urządzenia oraz
+        oprogramowania, powinna znaleźć się w readme oraz wiki repozytoriów
+        projektów.
+      </p>
+
+      <h2 class="text-xl mb-1">Repozytoria na github.com</h2>
+
+      <div class="text-blue-400">
+        <a
+          href="https://github.com/jakubrekowski/ezn-scoreboard-ui"
+          target="_blank"
+          rel="noreferer"
+        >
+          ezn-scoreboard-ui (strona) </a
+        ><br />
+        <a
+          href="https://github.com/Elektroniczne-Zaklady-Naukowe/ezn-scoreboard"
+          target="_blank"
+          rel="noreferer"
+        >
+          ezn-scoreboard (hardware i firmware)
+        </a>
+      </div>
+
+      <div class="license text-sm text-gray-300 mt-8">
+        To oprogramownie udostępnione jest na warunkach licencji
+        <a
+          href="https://github.com/jakubrekowski/ezn-scoreboard-ui/blob/main/license.md"
+          target="_blank"
+          rel="noreferer"
+          class="text-blue-200"
+        >
+          Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA
+          4.0)</a
+        >
+      </div>
+    </div>
+  </body>
 </html>

@@ -6,6 +6,8 @@ const offlineList = [
   '/src/master.css',
   '/src/sevenSegment.css',
   '/src/dashboard.js',
+  '/src/ezn.svg',
+  '/src/octocat.svg',
   '/src/icons/icon192.png',
   '/src/icons/icon512.png',
   '/src/fonts/seven_segment-webfont.woff',
