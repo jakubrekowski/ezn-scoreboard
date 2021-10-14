@@ -11,6 +11,7 @@ const app = new Vue({
     timeSet: "10",
     //  ui controls
     bleConnected: false,
+    bleError: false,
     showProfileSelect: false,
     selectedProfile: 0,
     profile: ["Koszykówka", "Siatkówka", "Piłka ręczna / nożna"],
@@ -217,6 +218,13 @@ async function updateCountdown() {
     await characteristics.tsec.writeValue(new Int32Array([seconds]).buffer)
     timeDown--
   }
+}
+
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+
+if (params.bleError) {
+  app.bleError = true
 }
 
 if ("serviceWorker" in navigator) {

@@ -15,5 +15,8 @@
     "url": "https://github.com/jakubrekowski/ezn-scoreboard-ui/issues"
   },
   "homepage": "https://github.com/jakubrekowski/ezn-scoreboard-ui#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "parcel": "^2.0.0"
+  }
 }
