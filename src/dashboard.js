@@ -37,17 +37,11 @@ const app = new Vue({
       this.timeStop = false;
     },
     async LPointAdd() {
-      if (lpoint >= 254) {
-        return;
-      }
       await characteristics.lpoint.writeValue(
         new Int32Array([++this.pointsA]).buffer
       );
     },
     async LPointRem() {
-      if (lpoint <= -1) {
-        return;
-      }
       await characteristics.lpoint.writeValue(
         new Int32Array([--this.pointsA]).buffer
       );
@@ -57,17 +51,11 @@ const app = new Vue({
       this.pointsA = 0;
     },
     async LFaulsAdd() {
-      if (lfauls >= 9) {
-        return;
-      }
       await characteristics.ladd1.writeValue(
         new Int32Array([++this.faulsA]).buffer
       );
     },
     async LFaulsRem() {
-      if (lfauls <= -1) {
-        return;
-      }
       await characteristics.ladd1.writeValue(
         new Int32Array([--this.faulsA]).buffer
       );
@@ -77,17 +65,11 @@ const app = new Vue({
       this.faulsA = 0;
     },
     async LSetsAdd() {
-      if (lsets >= 9) {
-        return;
-      }
       await characteristics.ladd2.writeValue(
         new Int32Array([++this.setsA]).buffer
       );
     },
     async LSetsRem() {
-      if (lsets <= -1) {
-        return;
-      }
       await characteristics.ladd2.writeValue(
         new Int32Array([--this.setsA]).buffer
       );
@@ -105,9 +87,6 @@ const app = new Vue({
       );
     },
     async RPointRem() {
-      if (rpoint <= -1) {
-        return;
-      }
       await characteristics.rpoint.writeValue(
         new Int32Array([--this.pointsB]).buffer
       );
@@ -117,17 +96,11 @@ const app = new Vue({
       this.pointsB = 0;
     },
     async RFaulsAdd() {
-      if (rfauls >= 9) {
-        return;
-      }
       await characteristics.radd1.writeValue(
         new Int32Array([++this.faulsB]).buffer
       );
     },
     async RFaulsRem() {
-      if (rfauls <= -1) {
-        return;
-      }
       await characteristics.radd1.writeValue(
         new Int32Array([--this.faulsB]).buffer
       );
@@ -137,17 +110,11 @@ const app = new Vue({
       this.faulsB = 0;
     },
     async RSetsAdd() {
-      if (rsets >= 9) {
-        return;
-      }
       await characteristics.radd2.writeValue(
         new Int32Array([++this.setsB]).buffer
       );
     },
     async RSetsRem() {
-      if (rsets <= -1) {
-        return;
-      }
       await characteristics.radd2.writeValue(
         new Int32Array([--this.setsB]).buffer
       );
